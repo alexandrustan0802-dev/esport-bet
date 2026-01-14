@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esports Trade Hub - Cumpără și Vinde Jocuri</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Esports Trade Hub</h1>
+            <p class="tagline">Conectează-te cu alți gameri. Cumpără, vinde sau schimbă jocuri video.</p>
+
+            <div class="hero-actions">
+                <a href="#" class="btn btn-secondary">Login</a>
+                <a href="#" class="btn btn-primary">Sign Up</a>
+            </div>
+
+            <div class="search-section">
+                <input type="text" placeholder="Cauta jocuri: Cyberpunk 2077, God of War, FIFA 24..." aria-label="Cauta jocuri video" class="search-input">
+                <button class="btn btn-accent search-btn">Cauta</button>
+            </div>
+            
+            <button class="btn btn-call-to-action" id="postAdBtn">Pune Anunț</button>
+        </div>
+    </header>
+
+    <main class="main-content container">
+        <section class="latest-listings">
+            <h2>Anunțuri Recente</h2>
+            <div class="listing-grid">
+                <!-- Aici vor apărea anunțurile listate de utilizatori -->
+                <div class="listing-card">
+                    <h3>Cyberpunk 2077</h3>
+                    <p class="version">PC (GOG)</p>
+                    <p class="price">200 RON</p>
+                    <button class="btn btn-secondary small">Detalii</button>
+                </div>
+                <div class="listing-card">
+                    <h3>God of War Ragnarök</h3>
+                    <p class="version">PS5</p>
+                    <p class="price">280 RON</p>
+                    <button class="btn btn-secondary small">Detalii</button>
+                </div>
+                <div class="listing-card">
+                    <h3>The Legend of Zelda: Tears of the Kingdom</h3>
+                    <p class="version">Nintendo Switch</p>
+                    <p class="price">320 RON</p>
+                    <button class="btn btn-secondary small">Detalii</button>
+                </div>
+                <div class="listing-card">
+                    <h3>Forza Horizon 5</h3>
+                    <p class="version">Xbox Series X</p>
+                    <p class="price">150 RON</p>
+                    <button class="btn btn-secondary small">Detalii</button>
+                </div>
+                <!-- Poți adăuga mai multe carduri de exemplu -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Esports Trade Hub. Toate drepturile rezervate.</p>
+        </div>
+    </footer>
+
+    <!-- Modal pentru "Pune Anunț" -->
+    <div id="postAdModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Pune un Anunț Nou</h2>
+            <form>
+                <div class="form-group">
+                    <label for="gameName">Numele Jocului:</label>
+                    <input type="text" id="gameName" placeholder="Ex: Elden Ring" required>
+                </div>
+                <div class="form-group">
+                    <label for="gameVersion">Platforma/Varianta:</label>
+                    <input type="text" id="gameVersion" placeholder="Ex: PC, PS5, Xbox Series X, Switch" required>
+                </div>
+                <div class="form-group">
+                    <label for="gamePrice">Prețul Cerut (RON):</label>
+                    <input type="number" id="gamePrice" min="0" step="0.01" placeholder="Ex: 250.00" required>
+                </div>
+                <button type="submit" class="btn btn-primary submit-ad-btn">Publică Anunțul</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Funcționalitate pentru modalul "Pune Anunț"
+        const postAdBtn = document.getElementById('postAdBtn');
+        const postAdModal = document.getElementById('postAdModal');
+        const closeButton = document.querySelector('.close-button');
+
+        postAdBtn.addEventListener('click', () => {
+            postAdModal.style.display = 'flex'; // Folosim flex pentru centrare
+        });
+
+        closeButton.addEventListener('click', () => {
+            postAdModal.style.display = 'none';
+        });
+
+        // Închide modalul dacă se apasă în afara conținutului său
+        window.addEventListener('click', (event) => {
+            if (event.target == postAdModal) {
+                postAdModal.style.display = 'none';
+            }
+        });
+
+        // O funcționalitate simplă pentru a arăta că anunțul a fost publicat (doar pentru exemplul vizual)
+        const adForm = postAdModal.querySelector('form');
+        adForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Oprește reîncărcarea paginii
+            alert('Anunțul tău a fost publicat cu succes! (Aceasta este o simulare)');
+            postAdModal.style.display = 'none'; // Închide modalul
+            adForm.reset(); // Resetează formularul
+        });
+    </script>
+</body>
+</html>
