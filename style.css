@@ -1,0 +1,423 @@
+/* General Reset & Base Styles */
+:root {
+    --bg-dark: #121212; /* Dark background */
+    --bg-light-dark: #1a1a1a; /* Slightly lighter dark for cards/elements */
+    --accent-blue: #00bcd4; /* Bright cyan/blue */
+    --accent-purple: #7b1fa2; /* Deep purple */
+    --text-light: #e0e0e0; /* Light gray text */
+    --text-dark: #333; /* Dark text for contrast */
+    --border-color: #333; /* Subtle border */
+    --glow-color: #00bcd4; /* Neon glow color */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--accent-blue);
+    text-shadow: 0 0 8px var(--glow-color);
+}
+
+h1 {
+    font-size: 3.5em;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-size: 2.2em;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+p.tagline {
+    font-size: 1.2em;
+    margin-bottom: 2em;
+    color: var(--text-light);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+    background-image: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+    color: var(--text-light);
+    border: 2px solid transparent;
+}
+
+.btn-primary:hover {
+    background-image: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 0 15px var(--glow-color);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--accent-blue);
+    border: 2px solid var(--accent-blue);
+}
+
+.btn-secondary:hover {
+    background-color: var(--accent-blue);
+    color: var(--bg-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 0 15px var(--glow-color);
+}
+
+.btn-accent {
+    background-color: var(--accent-blue);
+    color: var(--bg-dark);
+    border: 2px solid var(--accent-blue);
+}
+
+.btn-accent:hover {
+    background-color: transparent;
+    color: var(--accent-blue);
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 0 15px var(--glow-color);
+}
+
+.btn-call-to-action {
+    background-image: linear-gradient(45deg, #ff00ea, #00d4ff); /* More vibrant gradient */
+    color: white;
+    padding: 18px 40px;
+    font-size: 1.4em;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 0, 234, 0.7);
+    margin-top: 3em;
+}
+
+.btn-call-to-action:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 212, 255, 0.9);
+}
+
+.btn.small {
+    padding: 8px 15px;
+    font-size: 0.85em;
+    border-radius: 5px;
+}
+
+
+/* Hero Section */
+.hero {
+    background: url('https://source.unsplash.com/1600x900/?esports,gaming,cyberpunk') no-repeat center center/cover;
+    background-attachment: fixed; /* Parallax effect */
+    text-align: center;
+    padding: 100px 0;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1; /* For overlay */
+}
+
+.hero::before { /* Overlay for better text readability */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(3px); /* Subtle blur for futuristic feel */
+    z-index: -1;
+}
+
+.hero .container {
+    position: relative; /* Ensure content is above overlay */
+    z-index: 2;
+}
+
+.hero-actions {
+    margin-bottom: 2.5em;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.search-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 3em;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-input {
+    flex-grow: 1;
+    padding: 15px 20px;
+    border: 2px solid var(--accent-blue);
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    background-color: var(--bg-light-dark);
+    color: var(--text-light);
+    font-size: 1.1em;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-input::placeholder {
+    color: rgba(var(--text-light), 0.6);
+}
+
+.search-input:focus {
+    border-color: var(--glow-color);
+    box-shadow: 0 0 15px var(--glow-color);
+}
+
+.search-btn {
+    border-radius: 0 8px 8px 0;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border: 2px solid var(--accent-blue);
+}
+
+/* Main Content - Listings */
+.main-content {
+    flex-grow: 1;
+    padding: 80px 0;
+}
+
+.latest-listings {
+    margin-bottom: 5em;
+}
+
+.listing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    justify-content: center;
+}
+
+.listing-card {
+    background-color: var(--bg-light-dark);
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.listing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 15px var(--glow-color);
+}
+
+.listing-card h3 {
+    color: var(--accent-blue);
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.listing-card .version {
+    color: rgba(var(--text-light), 0.7);
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.listing-card .price {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8em;
+    color: var(--accent-blue);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--bg-light-dark);
+    padding: 30px 0;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+}
+
+.footer p {
+    color: rgba(var(--text-light), 0.7);
+    font-size: 0.9em;
+}
+
+/* Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--bg-light-dark);
+    margin: auto;
+    padding: 40px;
+    border: 1px solid var(--accent-blue);
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px var(--glow-color);
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 1.5em;
+    color: var(--accent-blue);
+    font-size: 2em;
+}
+
+.close-button {
+    color: var(--text-light);
+    font-size: 2.5em;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--accent-blue);
+    text-decoration: none;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-light);
+    font-size: 1.1em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #2a2a2a;
+    color: var(--text-light);
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 10px var(--accent-blue);
+}
+
+.submit-ad-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+    border-radius: 10px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    p.tagline {
+        font-size: 1em;
+    }
+    .hero-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .search-section {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .search-input, .search-btn {
+        width: 100%;
+        border-radius: 8px; /* Reset border radius for stacked elements */
+    }
+    .search-input {
+        border-bottom: 1px solid var(--accent-blue); /* Add border back */
+    }
+    .hero-actions .btn {
+        width: 80%;
+    }
+    .btn-call-to-action {
+        padding: 15px 30px;
+        font-size: 1.2em;
+    }
+    .listing-grid {
+        grid-template-columns: 1fr; /* Stack cards on small screens */
+    }
+    .modal-content {
+        padding: 30px;
+    }
+    .close-button {
+        font-size: 2em;
+        top: 10px;
+        right: 15px;
+    }
+}
